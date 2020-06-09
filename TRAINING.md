@@ -5,7 +5,7 @@ Here, we provide training examples of 3 self-play methods: genetic algorithm (GA
 ## SlimeVolley-v0: State Observation Environment
 
 <p align="left">
-  <img width="50%" src="https://media.giphy.com/media/VGPfocuIS7YYh6kyMv/giphy.gif"></img>
+  <img width="100%" src="https://otoro.net/img/slimegym/state.gif"></img>
 </p>
 
 We will first train agents to play Slime Volleyball using state observations (SlimeVolley-v0) and discuss various methods for training agents via self-play. First, we would like to measure the performance of agents trained to play directly in the single-agent environment against the built-in opponent that is controlled by the baseline policy.

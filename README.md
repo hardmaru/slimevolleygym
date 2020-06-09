@@ -34,11 +34,13 @@ This environment is meant to complement existing simple benchmark tasks, such as
 
 ## Installation
 
-<!--From pip package, if you only want to use the gym environment, but don't want the example usage scripts:-->
+Install from pip package, if you only want to use the gym environment, but don't want the example usage scripts:
 
-<!--Install from the repo, if you want basic usage demos, training scripts, pre-trained models:-->
+```
+pip install slimevolleygym
+```
 
-To install this package from the repo:
+Install from the repo, if you want basic usage demos, training scripts, pre-trained models:
 
 ```
 git clone https://github.com/hardmaru/slimevolleygym.git
@@ -78,7 +80,7 @@ There are two types of environments: state-space observation or pixel observatio
 |SlimeVolleyPixel-v0|Box(84, 168, 3)|MultiBinary(3)
 |SlimeVolleyNoFrameskip-v0|Box(84, 168, 3)|Discrete(6)
 
-`SlimeVolleyNoFrameskip-v0` identical to `SlimeVolleyPixel-v0` except that the action space is now a one-hot vector typically seen in Atari RL agents.
+`SlimeVolleyNoFrameskip-v0` identical to `SlimeVolleyPixel-v0` except that the action space is now a one-hot vector typically used in Atari RL agents.
 
 In state-space observation, the 12-dim vector corresponds to the following states:
 
@@ -86,7 +88,7 @@ In state-space observation, the 12-dim vector corresponds to the following state
 
 The origin point (0, 0) is located at the bottom of the fence.
 
-Both state and pixel observations are presented assuming the agent is playing on the right hand side of the screen.
+Both state and pixel observations are presented assuming the agent is playing on the right side of the screen.
 
 ### Using Multi-agent Environment
 
