@@ -130,7 +130,7 @@ Under this set up, CMA-ES can easily optimize the agent's parameters to maximize
 
 ![self_play_ppo_training](figure/cmaes_sp_results.svg)
 
-This set up with a clear "survival" metric converges quickly to the maximum possible duration after a few hundred generations. We took the best "cooperative" agent in the population after 500 generations, and had it play, for the first time, against the baseline policy where it achieved an average score of -0.071 ± 0.827, which is not too bad considering that it wasn't trained to win. The performance against other agents, such as PPO, the earlier CMA-ES, self-play GA, and self-play PPO is also satisfactory.
+This set up with a clear "survival" metric converges quickly to the maximum possible duration after a few hundred generations. We took the best "cooperative" agent in the population after 500 generations, and had it play, for the first time, against the baseline policy where it achieved an average score of -0.071 ± 0.827, which is not too bad considering that it wasn't trained to win. The performance against other agents, such as PPO and the earlier CMA-ES is also satisfactory, although it consistently loses against the other self-play methods.
 
 There are a few reasons why this alternate setup is an effective way to indirectly learn an effective Slime Volleyball policy. Training an agent to be really good at *not losing* may allow it to indirectly learn defensive strategies against a good opponent. It can also wait until a weak opponent makes a mistake and likely result in the ball landing on the other side.
 
