@@ -90,7 +90,7 @@ The origin point (0, 0) is located at the bottom of the fence.
 
 Both state and pixel observations are presented assuming the agent is playing on the right side of the screen.
 
-### Using Multi-agent Environment
+### Using Multi-Agent Environment
 
 It is straight forward to modify the gym loop to enable multi-agent or self-play. Here is a basic gym loop:
 
