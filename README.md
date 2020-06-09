@@ -1,7 +1,7 @@
 # Slime Volleyball Gym Environment
 
 <p align="left">
-  <img width="100%" src="https://media.giphy.com/media/U1n2jqZ3fpq5oszppF/giphy.gif"></img>
+  <img width="100%" src="https://otoro.net/img/slimegym/pixel.gif"></img>
 </p>
 
 Slime Volleyball is a game created in the early 2000s by an unknown author.
