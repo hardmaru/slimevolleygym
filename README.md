@@ -187,7 +187,7 @@ Below are scores achieved by various algorithms and links to their implementatio
 
 ### SlimeVolley-v0 (Sample Efficiency)
 
-For sample efficiency, we can measure how many timesteps it took to train an agent that can achieve a positive expected score against the baseline agent (1000 episodes), over several independent trial runs:
+For sample efficiency, we can measure how many timesteps it took to train an agent that can achieve a positive average score against the baseline agent (over 1000 episodes), over several independent trial runs:
 
 |Method| Timesteps (Best) | Timesteps (Median)| Trials | Other Info
 |---|---|---|---|---|
