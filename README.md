@@ -63,7 +63,7 @@ python test_state.py
 
 You can control the agent on the right using the arrow keys, or the agent on the left using (A, W, D).
 
-Similarly, `text_pixel.py` allows you to play in the pixelated environment, and `test_atari.py` lets you play the game by observing the preprocessed stacked frames (84px x 84px x 4 frames) typically done for Atari RL agents:
+Similarly, `test_pixel.py` allows you to play in the pixelated environment, and `test_atari.py` lets you play the game by observing the preprocessed stacked frames (84px x 84px x 4 frames) typically done for Atari RL agents:
 
 <p align="left">
   <img width="50%" src="https://media.giphy.com/media/W3NItV6PINmbgUFKPf/giphy.gif"></img>
