@@ -57,7 +57,7 @@ python test_state.py
 ```
 
 <p align="left">
-  <img width="50%" src="https://media.giphy.com/media/gICNcpLzjDTEgylXq9/giphy.gif"></img>
+  <img width="50%" src="https://otoro.net/img/slimegym/state.gif"></img>
   <!--<br/><i>State-space observation mode.</i>-->
 </p>
 
