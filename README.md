@@ -225,8 +225,8 @@ Results for pixel observation version of the environment (`SlimeVolleyPixel-v0` 
 |Maximum Possible Score|5.0| | |
 |PPO | 0.087 ± 1.004 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md#pixel-observation-ppo)
 |Rainbow | 0.037 ± 0.994 | 1000 | [link](https://github.com/hardmaru/RainbowSlimeVolley)
-|[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  | (>= 1000) | 
 |Random Policy | -4.866 ± 0.372 | 1000 | 
+|[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  | (>= 1000) | 
 
 ## Publications
 
