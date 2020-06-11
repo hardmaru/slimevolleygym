@@ -169,7 +169,8 @@ python eval_agents.py --left ppo --right cma --render
 ```
 
 <p align="left">
-  <img width="50%" src="https://media.giphy.com/media/VGPfocuIS7YYh6kyMv/giphy.gif"></img>
+  <!--<img width="50%" src="https://media.giphy.com/media/VGPfocuIS7YYh6kyMv/giphy.gif"></img>-->
+  <img width="50%" src="https://media.giphy.com/media/WsMaF3xeATeiCv7dBq/giphy.gif"></img>
   <br/><i>Evaluating PPO agent (left) against CMA-ES (right).</i>
 </p>
 
@@ -225,10 +226,10 @@ Results for pixel observation version of the environment (`SlimeVolleyPixel-v0` 
 |Maximum Possible Score|5.0| | |
 |PPO | 0.087 ± 1.004 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |Rainbow | 0.037 ± 0.994 | 1000 | [link](https://github.com/hardmaru/RainbowSlimeVolley)
-|A2C | -0.53 +/- 1.29 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|ACKTR | -2.53 +/- 1.67 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|ACER | -2.88 +/- 1.66 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|DQN | -4.74 +/- 0.55 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|A2C | -0.53 ± 1.29 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACKTR | -2.53 ± 1.67 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACER | -2.88 ± 1.66 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|DQN | -4.74 ± 0.55 | 1000 | [link](https://github.com/hardmaru/rlzoo)
 |Random Policy | -4.866 ± 0.372 | 1000 | 
 |[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  | (>= 1000) | 
 
