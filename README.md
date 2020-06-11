@@ -211,7 +211,7 @@ Table of average scores achieved versus agents other than the default baseline p
 |CMA-ES | 1.148 ± 1.071 | -0.133 ± 0.414 | — | -0.301 ± 0.618 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |GA (Self-Play) | 0.353 ± 0.728  | 3.128 ± 1.509 | 0.301 ± 0.618 | — | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |CMA-ES (Self-Play) | -0.071 ± 0.827  |  -0.749 ± 0.846 |  -0.351 ± 0.651 |  -4.923 ± 0.342 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
-|PPO (Self-Play) | -0.371 ± 1.085  | 0.119 ± 1.46 |  -2.304 ± 1.392 |  -0.42 ± 0.717 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md#self-play-via-ppo)
+|PPO (Self-Play) | -0.371 ± 1.085  | 0.119 ± 1.46 |  -2.304 ± 1.392 |  -0.42 ± 0.717 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  |  |
 
 It is interesting to note that while GA (Self-Play) did not perform as well against the baseline policy compared to PPO and CMA-ES, it is a superior policy if evaluated against these methods that trained directly against the baseline policy.
@@ -223,8 +223,12 @@ Results for pixel observation version of the environment (`SlimeVolleyPixel-v0` 
 |Pixel Observation|Average Score|Episodes|Other Info
 |---|---|---|---|
 |Maximum Possible Score|5.0| | |
-|PPO | 0.087 ± 1.004 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md#pixel-observation-ppo)
+|PPO | 0.087 ± 1.004 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |Rainbow | 0.037 ± 0.994 | 1000 | [link](https://github.com/hardmaru/RainbowSlimeVolley)
+|A2C | -0.53 +/- 1.29 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACKTR | -2.53 +/- 1.67 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACER | -2.88 +/- 1.66 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|DQN | -4.74 +/- 0.55 | 1000 | [link](https://github.com/hardmaru/rlzoo)
 |Random Policy | -4.866 ± 0.372 | 1000 | 
 |[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  | (>= 1000) | 
 
