@@ -12,7 +12,7 @@ from slimevolleygym.mlp import Model
 from slimevolleygym import multiagent_rollout as rollout
 
 # Settings
-random_seed = 100
+random_seed = 612
 population_size = 128
 total_tournaments = 500000
 save_freq = 1000
