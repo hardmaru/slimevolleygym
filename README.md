@@ -26,9 +26,9 @@ This environment is based on [Neural Slime Volleyball](https://otoro.net/slimevo
 
 - A [tutorial](TRAINING.md) demonstrating several different training methods (e.g. single agent, self-play, evolution) that require only a single CPU machine in most cases. Potentially useful for educational purposes.
 
-- A pixel observation mode is available. Observations are directly rendered to numpy arrays and runs on headless cloud machines. The pixel version of the environment mimics gym environments based on the Atari Learning Environment and has been tested on several Atari gym wrappers also trained with models tuned for Atari.
+- A pixel observation mode is available. Observations are directly rendered to numpy arrays and runs on headless cloud machines. The pixel version of the environment mimics gym environments based on the Atari Learning Environment and has been tested on several Atari gym wrappers and RL models tuned for Atari.
 
-- The opponent's observation is made available in the optional `info` object returned by `env.step()` for both state and pixel settings. The observations are constructed as if the agent is always playing on the right court, even if it is playing on the left court, so an agent trained to play on the one side can play on the other side without adjustment.
+- The opponent's observation is made available in the optional `info` object returned by `env.step()` for both state and pixel settings. The observations are constructed as if the agent is always playing on the right court, even if it is playing on the left court, so an agent trained to play on one side can play on the other side without adjustment.
 
 This environment is meant to complement existing simple benchmark tasks, such as CartPole, Lunar Lander, Bipedal Walker, Car Racing, and continuous control tasks (MuJoCo / PyBullet / DM Control), but with an extra game-playing element. The motivation is to easily enable trained agents to play against each other, and also let us easily train agents directly in a multi-agent setting, thus adding an extra dimension for evaluating an agent's performance.
 
