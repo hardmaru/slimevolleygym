@@ -580,7 +580,7 @@ class Game:
     if (self.ball.isColliding(self.fenceStub)):
       self.ball.bounce(self.fenceStub)
 
-    # negated, since we want reward to be from the persepctive of blue agent being trained.
+    # negated, since we want reward to be from the persepctive of right agent being trained.
     result = -self.ball.checkEdges()
 
     if (result != 0):
@@ -629,9 +629,9 @@ class SlimeVolleyEnv(gym.Env):
   """
   Gym wrapper for Slime Volley game.
 
-  By default, the agent you are training controls the blue agent
-  on the right. The blue agent on the left is controlled by the
-  baseline RNN policy.
+  By default, the agent you are training controls the right agent
+  on the right. The agent on the left is controlled by the baseline
+  RNN policy.
 
   Game ends when an agent loses 5 matches (or at t=3000 timesteps).
 
@@ -639,13 +639,13 @@ class SlimeVolleyEnv(gym.Env):
   deviates from Gym env. Can be enabled via supplying optional action
   to override the default baseline agent's policy:
 
-  blueObs, reward, done, blueObs = env.step(blueAction, blueAction)
+  obs1, reward, done, info = env.step(action1, action2)
 
-  the next obs for the blue agent is returned in the optional
+  the next obs for the right agent is returned in the optional
   fourth item from the step() method.
 
-  reward is in the perspective of the blue agent so the reward
-  for the blue agent is the negative of this number.
+  reward is in the perspective of the right agent so the reward
+  for the left agent is the negative of this number.
   """
   metadata = {
     'render.modes': ['human', 'rgb_array', 'state'],
@@ -698,7 +698,7 @@ class SlimeVolleyEnv(gym.Env):
     """
     Reward modes:
 
-    net score = yellow agent wins minus blue agent wins
+    net score = right agent wins minus left agent wins
 
     0: returns net score (basic reward)
     1: returns 0.01 x number of timesteps (max 3000) (survival reward)
@@ -1019,12 +1019,12 @@ if __name__=="__main__":
 
   Humans can override controls:
 
-  blue Agent:
+  left Agent:
   W - Jump
   A - Left
   D - Right
 
-  blue Agent:
+  right Agent:
   Up Arrow, Left Arrow, Right Arrow
   """
 
