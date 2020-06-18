@@ -9,6 +9,7 @@ setup(
     packages=['slimevolleygym'],
     install_requires=[
         'gym>=0.9.4',
-        'numpy>=1.13.0'
+        'numpy>=1.13.0',
+        'opencv-python>=4.2.0.34'
     ]
 )
