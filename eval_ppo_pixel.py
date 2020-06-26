@@ -21,10 +21,10 @@ from time import sleep
 
 SEED = 831
 
-RENDER_MODE = False
+RENDER_MODE = True
 
 viewer = None
-RENDER_ATARI = False # Render the game using the actual downsampled 84x84x4 greyscale inputs
+RENDER_ATARI = True # Render the game using the actual downsampled 84x84x4 greyscale inputs
 
 cv2 = None
 rendering = None

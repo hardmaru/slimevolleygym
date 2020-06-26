@@ -177,7 +177,7 @@ The PPO implementation in stable-baselines includes a CNN Policy for working wit
 
 Although not required, we did find that it was easier to train the pixel observation version of the PPO agent using a reward function that incorporated a small survival reward discussed earlier (in the cooperative section) to facilitate early learning. This can be incorporated by applying the wrapper `SurvivalRewardEnv` over the original environment (before the Atari pre-processing), or simply make the environment using the registered env ID `SlimeVolleySurvivalNoFrameskip-v0` (refer to [code](https://github.com/hardmaru/slimevolleygym/blob/master/training_scripts/train_ppo_pixel.py)).
 
-The agent is evaluated in the original environment without the extra survival bonus rewards. The best PPO agent (using pixel observations) achieved a score of 0.247 ± 1.055 versus the baseline policy (using state observations).
+The agent is evaluated in the original environment without the extra survival bonus rewards. The best PPO agent (using pixel observations) achieved a score of 0.435 ± 0.961 versus the baseline policy (using state observations).
 
 ## Pixel Observation Rainbow
 

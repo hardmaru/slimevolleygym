@@ -224,7 +224,7 @@ Results for pixel observation version of the environment (`SlimeVolleyPixel-v0` 
 |Pixel Observation|Average Score|Episodes|Other Info
 |---|---|---|---|
 |Maximum Possible Score|5.0| | |
-|PPO | 0.247 ± 1.055 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
+|PPO | 0.435 ± 0.961 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |Rainbow | 0.037 ± 0.994 | 1000 | [link](https://github.com/hardmaru/RainbowSlimeVolley)
 |A2C | -0.53 ± 1.29 | 1000 | [link](https://github.com/hardmaru/rlzoo)
 |ACKTR | -2.53 ± 1.67 | 1000 | [link](https://github.com/hardmaru/rlzoo)
