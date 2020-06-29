@@ -868,7 +868,7 @@ class SlimeVolleyEnv(gym.Env):
       return self.viewer.render(return_rgb_array = mode=='rgb_array')
 
   def close(self):
-    if self.viewer():
+    if self.viewer:
       self.viewer.close()
     
   def get_action_meanings(self):
