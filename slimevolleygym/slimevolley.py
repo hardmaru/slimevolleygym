@@ -867,6 +867,10 @@ class SlimeVolleyEnv(gym.Env):
       self.game.display(self.viewer)
       return self.viewer.render(return_rgb_array = mode=='rgb_array')
 
+  def close(self):
+    if self.viewer:
+      self.viewer.close()
+    
   def get_action_meanings(self):
     return [self.atari_action_meaning[i] for i in self.atari_action_set]
 
