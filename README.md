@@ -226,10 +226,10 @@ Results for pixel observation version of the environment (`SlimeVolleyPixel-v0` 
 |Maximum Possible Score|5.0| | |
 |PPO | 0.435 ± 0.961 | 1000 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
 |Rainbow | 0.037 ± 0.994 | 1000 | [link](https://github.com/hardmaru/RainbowSlimeVolley)
-|A2C | -0.53 ± 1.29 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|ACKTR | -2.53 ± 1.67 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|ACER | -2.88 ± 1.66 | 1000 | [link](https://github.com/hardmaru/rlzoo)
-|DQN | -4.74 ± 0.55 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|A2C | -0.079 ± 1.091 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACKTR | -1.183 ± 1.480 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|ACER | -1.789 ± 1.632 | 1000 | [link](https://github.com/hardmaru/rlzoo)
+|DQN | -4.091 ± 1.242 | 1000 | [link](https://github.com/hardmaru/rlzoo)
 |Random Policy | -4.866 ± 0.372 | 1000 | 
 |[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  | (>= 1000) | 
 
