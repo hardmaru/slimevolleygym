@@ -200,7 +200,7 @@ For sample efficiency, we can measure how many timesteps it took to train an age
 |Method| Timesteps (Best) | Timesteps (Median)| Trials | Other Info
 |---|---|---|---|---|
 |PPO | 1.274M | 2.998M | 17 | [link](https://github.com/hardmaru/slimevolleygym/blob/master/TRAINING.md)
-|Data-efficient Rainbow | 0.750M | 0.752M | 3 | [link](https://github.com/pfnet/pfrl/blob/master/examples/slimevolley/README.md)
+|Data-efficient Rainbow | 0.750M | 0.751M | 3 | [link](https://github.com/pfnet/pfrl/blob/master/examples/slimevolley/README.md)
 |[Add Method](https://github.com/hardmaru/slimevolleygym/edit/master/README.md) |  |  |  | 
 
 ### SlimeVolley-v0 (Against Other Agents)
