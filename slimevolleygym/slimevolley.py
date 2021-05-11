@@ -775,15 +775,15 @@ class SlimeVolleyEnv(gym.Env):
 
     if self.otherAction is not None:
       otherAction = self.otherAction
-
-    if self.atari_mode:
-      action = self.discreteToBox(action)
-      if otherAction is not None:
-        otherAction = self.discreteToBox(otherAction)
-
+      
     if otherAction is None: # override baseline policy
       obs = self.game.agent_left.getObservation()
       otherAction = self.policy.predict(obs)
+
+    if self.atari_mode:
+      action = self.discreteToBox(action)
+      otherAction = self.discreteToBox(otherAction)
+
     self.game.agent_left.setAction(otherAction)
     self.game.agent_right.setAction(action) # external agent is agent_right
 
