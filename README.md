@@ -16,6 +16,14 @@ The game is very simple: the agent's goal is to get the ball to land on the grou
 
 This environment is based on [Neural Slime Volleyball](https://otoro.net/slimevolley/), a JavaScript game I created in [2015](https://blog.otoro.net/2015/03/28/neural-slime-volleyball/) that used self-play and evolution to train a simple neural network agent to play the game better than most human players. I decided to port it over to Python as a lightweight and fast gym environment as a testbed for more advanced RL methods such as multi-agent, self-play, continual learning, and imitation learning algorithms.
 
+### Note: Regarding Libraries
+
+- The pre-trained PPO models were trained using [stable-baselines](https://github.com/hill-a/stable-baselines) v2.10, *not* [stable-baselines3](https://github.com/DLR-RM/stable-baselines3).
+
+- The examples were developed based on Gym version 0.19 or earlier. I tested 0.20.0 and it seemed to work, but later versions of Gym have API-breaking changes.
+
+- I used pyglet library 0.15.11 or earlier while developing this, but have not tested whether the package works for the latest versions of pyglet.
+
 ### Notable features
 
 - Only dependencies are gym and numpy. No other libraries needed to run the env, making it less likely to break.
