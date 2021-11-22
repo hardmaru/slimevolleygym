@@ -20,9 +20,9 @@ This environment is based on [Neural Slime Volleyball](https://otoro.net/slimevo
 
 - The pre-trained PPO models were trained using [stable-baselines](https://github.com/hill-a/stable-baselines) v2.10, *not* [stable-baselines3](https://github.com/DLR-RM/stable-baselines3).
 
-- The examples were developed based on Gym version 0.19 or earlier. I tested 0.20.0 and it seemed to work, but later versions of Gym have API-breaking changes.
+- The examples were developed based on Gym version 0.19.0 or earlier. I tested 0.20.0 briefly and it seems to work, but later versions of Gym have API-breaking changes.
 
-- I used pyglet library 0.15.11 or earlier while developing this, but have not tested whether the package works for the latest versions of pyglet.
+- I used pyglet library 0.15.7 or earlier while developing this, but have not tested whether the package works for the latest versions of pyglet.
 
 ### Notable features
 
