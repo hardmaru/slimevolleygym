@@ -10,6 +10,10 @@ Slime Volleyball is a game created in the early 2000s by an unknown author.
 
 ---
 
+**Update (May 12, 2022):** This environment has been ported over to [EvoJAX](https://github.com/google/evojax), hardware-accelerated neuroevolution toolkit that allows SlimeVolley to run on GPUs, enabling training time in minutes rather than hours.
+
+---
+
 SlimeVolleyGym is a simple gym environment for testing single and multi-agent reinforcement learning algorithms.
 
 The game is very simple: the agent's goal is to get the ball to land on the ground of its opponent's side, causing its opponent to lose a life. Each agent starts off with five lives. The episode ends when either agent loses all five lives, or after 3000 timesteps has passed. An agent receives a reward of +1 when its opponent loses or -1 when it loses a life.
