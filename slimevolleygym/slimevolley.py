@@ -647,10 +647,17 @@ class SlimeVolleyEnv(gym.Env):
   reward is in the perspective of the right agent so the reward
   for the left agent is the negative of this number.
   """
-  metadata = {
-    'render.modes': ['human', 'rgb_array', 'state'],
-    'video.frames_per_second' : 50
-  }
+  
+  if gym.version.VERSION > '0.22.0':
+    metadata = {
+      'render_modes': ['human', 'rgb_array', 'state'],
+      'video.frames_per_second' : 50
+    }
+  else:
+     metadata = {
+      'render.modes': ['human', 'rgb_array', 'state'],
+      'video.frames_per_second' : 50
+    }
 
   # for compatibility with typical atari wrappers
   atari_action_meaning = {
@@ -770,6 +777,10 @@ class SlimeVolleyEnv(gym.Env):
     note: although the action space is multi-binary, float vectors
     are fine (refer to setAction() to see how they get interpreted)
     """
+
+    # for gym version > 0.22.0, using tuple for two actions.
+    if isinstance(action, tuple):
+      action, otherAction = action
     done = False
     self.t += 1
 
