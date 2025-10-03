@@ -6,7 +6,7 @@ FPS (no-render): 100000 steps /7.956 seconds. 12.5K/s.
 
 import math
 import numpy as np
-import gym
+import gymnasium as gym
 import slimevolleygym
 
 np.set_printoptions(threshold=20, precision=3, suppress=True, linewidth=200)
@@ -65,15 +65,15 @@ if __name__=="__main__":
   policy = slimevolleygym.BaselinePolicy() # defaults to use RNN Baseline for player
 
   env = gym.make("SlimeVolley-v0")
-  env.seed(np.random.randint(0, 10000))
+  obs, info = env.reset(seed=np.random.randint(0, 10000))
   #env.seed(689)
 
   if RENDER_MODE:
     env.render()
-    env.viewer.window.on_key_press = key_press
-    env.viewer.window.on_key_release = key_release
+    env.unwrapped.viewer.window.on_key_press = key_press
+    env.unwrapped.viewer.window.on_key_release = key_release
 
-  obs = env.reset()
+  obs, info = env.reset(seed=np.random.randint(0, 10000))
 
   steps = 0
   total_reward = 0
@@ -90,9 +90,11 @@ if __name__=="__main__":
 
     if otherManualMode:
       otherAction = otherManualAction
-      obs, reward, done, _ = env.step(action, otherAction)
+      obs, reward, truncated, terminated, _ = env.step(action, otherAction)
+      done = truncated or terminated
     else:
-      obs, reward, done, _ = env.step(action)
+      obs, reward, truncated, terminated, _ = env.step(action)
+      done = truncated or terminated
 
     if reward > 0 or reward < 0:
       manualMode = False

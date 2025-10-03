@@ -2,14 +2,13 @@
 Pixel observation environment (atari compatible example, w/ 84x84 resized 4-frame stack.
 """
 
-import gym
-from gym import spaces
+import gymnasium as gym
+from gymnasium import spaces
 import numpy as np
-import slimevolleygym
 from pyglet.window import key
 from time import sleep
 import cv2
-from gym.envs.classic_control import rendering as rendering
+from slimevolleygym import rendering as rendering
 from slimevolleygym import FrameStack, render_atari
 
 class NoopResetEnv(gym.Wrapper):
@@ -29,18 +28,18 @@ class NoopResetEnv(gym.Wrapper):
     assert env.unwrapped.get_action_meanings()[0] == 'NOOP'
 
   def reset(self, **kwargs):
-    self.env.reset(**kwargs)
+    obs, info = self.env.reset(**kwargs)
     if self.override_num_noops is not None:
       noops = self.override_num_noops
     else:
-      noops = self.unwrapped.np_random.randint(1, self.noop_max + 1)
+      noops = self.unwrapped.np_random.integers(1, self.noop_max + 1)
     assert noops > 0
-    obs = None
     for _ in range(noops):
-      obs, _, done, _ = self.env.step(self.noop_action)
+      obs, _, truncated, terminated, _ = self.env.step(self.noop_action)
+      done = truncated or terminated
       if done:
-        obs = self.env.reset(**kwargs)
-    return obs
+        obs, info = self.env.reset(**kwargs)
+    return obs, info
 
   def step(self, action):
       return self.env.step(action)
@@ -68,21 +67,22 @@ class MaxAndSkipEnv(gym.Wrapper):
     :return: ([int] or [float], [float], [bool], dict) observation, reward, done, information
     """
     total_reward = 0.0
-    done = None
+    terminated = False
+    truncated = False
     for i in range(self._skip):
-      obs, reward, done, info = self.env.step(action)
+      obs, reward, truncated, terminated, info = self.env.step(action)
       if i == self._skip - 2:
         self._obs_buffer[0] = obs
       if i == self._skip - 1:
         self._obs_buffer[1] = obs
       total_reward += reward
-      if done:
+      if truncated or terminated:
         break
     # Note that the observation on the done=True frame
     # doesn't matter
     max_frame = self._obs_buffer.max(axis=0)
 
-    return max_frame, total_reward, done, info
+    return max_frame, total_reward, truncated, terminated, info
 
   def reset(self, **kwargs):
       return self.env.reset(**kwargs)
@@ -168,9 +168,8 @@ if __name__=="__main__":
   env = MaxAndSkipEnv(env, skip=4)
   env = WarpFrame(env)
   env = FrameStack(env, 4)
-  env.seed(689)
 
-  obs = env.reset()
+  obs, info = env.reset(seed=689)
 
   for t in range(10000):
 
@@ -180,7 +179,8 @@ if __name__=="__main__":
     else:
       action = 0 #env.action_space.sample() # your agent here (this takes random actions)
 
-    obs, reward, done, info = env.step(action)
+    obs, reward, truncated, terminated, info = env.step(action)
+    done = truncated or terminated
 
     if reward > 0 or reward < 0:
       print("reward", reward)

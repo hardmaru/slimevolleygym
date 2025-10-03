@@ -6,12 +6,12 @@ Note that for multiagent mode, otherObs's image is horizontally flipped
 Performance, 100,000 frames in 144.839 seconds, or 690 fps.
 """
 
-import gym
+import gymnasium as gym
 import slimevolleygym
 from time import sleep
 from pyglet.window import key
 
-from gym.envs.classic_control import rendering as rendering # to show actual obs2
+from slimevolleygym import rendering # to show actual obs2
 
 if __name__=="__main__":
 
@@ -38,11 +38,11 @@ if __name__=="__main__":
 
   policy = slimevolleygym.BaselinePolicy() # throw in a default policy (based on state, not pixels)
 
-  obs = env.reset()
+  obs, info = env.reset()
   env.render()
 
-  env.viewer.window.on_key_press = key_press
-  env.viewer.window.on_key_release = key_release
+  env.unwrapped.viewer.window.on_key_press = key_press
+  env.unwrapped.viewer.window.on_key_release = key_release
 
   defaultAction = [0, 0, 0]
 
@@ -51,7 +51,8 @@ if __name__=="__main__":
       action = manualAction # now just work w/ multibinary if it is not scalar
     else:
       action = defaultAction
-    obs, reward, done, info = env.step(action)
+    obs, reward, truncated, terminated, info = env.step(action)
+    done = truncated or terminated
     otherObs = info['otherObs']
 
     state = info['state'] # cheat and look at the actual state (to find default actions quickly)
@@ -60,7 +61,7 @@ if __name__=="__main__":
     #viewer.imshow(otherObs) # show the opponent's observtion (horizontally flipped)
     env.render()
     if done:
-      obs = env.reset()
+      obs, info = env.reset()
     if (t+1) % 5000 == 0:
       print(t+1)
 

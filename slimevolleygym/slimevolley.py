@@ -14,10 +14,10 @@ No dependencies apart from Numpy and Gym
 
 import logging
 import math
-import gym
-from gym import spaces
-from gym.utils import seeding
-from gym.envs.registration import register
+import gymnasium as gym
+from gymnasium import spaces
+from gymnasium.utils import seeding
+from gymnasium.envs.registration import register
 import numpy as np
 import cv2 # installed with gym anyways
 from collections import deque
@@ -101,7 +101,7 @@ rendering = None
 def checkRendering():
   global rendering
   if rendering is None:
-    from gym.envs.classic_control import rendering as rendering
+    import slimevolleygym.rendering as rendering
 
 def setPixelObsMode():
   """
@@ -348,7 +348,7 @@ class RelativeState:
               self.bx, self.by, self.bvx, self.bvy,
               self.ox, self.oy, self.ovx, self.ovy]
     scaleFactor = 10.0  # scale inputs to be in the order of magnitude of 10 for neural network.
-    result = np.array(result) / scaleFactor
+    result = np.array(result, dtype=np.float32) / scaleFactor
     return result
 
 class Agent:
@@ -465,7 +465,7 @@ class Agent:
     canvas = circle(canvas, toX(x+(0.6)*r*c+eyeX*0.15*r), toY(y+(0.6)*r*s+eyeY*0.15*r), toP(r)*0.1, color=(0, 0, 0))
 
     # draw coins (lives) left
-    for i in range(1, self.life):
+    for i in range(1, self.life+1):
       canvas = circle(canvas, toX(self.dir*(REF_W/2+0.5-i*2.)), WINDOW_HEIGHT-toY(1.5), toP(0.5), color=COIN_COLOR)
 
     return canvas
@@ -648,8 +648,8 @@ class SlimeVolleyEnv(gym.Env):
   for the left agent is the negative of this number.
   """
   metadata = {
-    'render.modes': ['human', 'rgb_array', 'state'],
-    'video.frames_per_second' : 50
+    'render_modes': ['human', 'rgb_array', 'state'],
+    'render_fps': 50
   }
 
   # for compatibility with typical atari wrappers
@@ -728,7 +728,7 @@ class SlimeVolleyEnv(gym.Env):
         shape=(PIXEL_HEIGHT, PIXEL_WIDTH, 3), dtype=np.uint8)
     else:
       high = np.array([np.finfo(np.float32).max] * 12)
-      self.observation_space = spaces.Box(-high, high)
+      self.observation_space = spaces.Box(-high, high, dtype=np.float32)
     self.canvas = None
     self.previous_rgbarray = None
 
@@ -770,7 +770,8 @@ class SlimeVolleyEnv(gym.Env):
     note: although the action space is multi-binary, float vectors
     are fine (refer to setAction() to see how they get interpreted)
     """
-    done = False
+    terminated = False
+    truncated = False
     self.t += 1
 
     if self.otherAction is not None:
@@ -792,10 +793,10 @@ class SlimeVolleyEnv(gym.Env):
     obs = self.getObs()
 
     if self.t >= self.t_limit:
-      done = True
+      truncated = True # Episode cut off by time limit
 
     if self.game.agent_left.life <= 0 or self.game.agent_right.life <= 0:
-      done = True
+      terminated = True  # Episode ended naturally
 
     otherObs = None
     if self.multiagent:
@@ -813,16 +814,18 @@ class SlimeVolleyEnv(gym.Env):
     }
 
     if self.survival_bonus:
-      return obs, reward+0.01, done, info
-    return obs, reward, done, info
+      return obs, reward+0.01, terminated, truncated, info
+    return obs, reward, terminated, truncated, info
 
   def init_game_state(self):
     self.t = 0
     self.game.reset()
 
-  def reset(self):
+  def reset(self, seed=None, options=None):
+    if seed is not None:
+        self.seed(seed)
     self.init_game_state()
-    return self.getObs()
+    return self.getObs(), {}
 
   def checkViewer(self):
     # for opengl viewer
@@ -869,7 +872,11 @@ class SlimeVolleyEnv(gym.Env):
 
   def close(self):
     if self.viewer:
-      self.viewer.close()
+      try:
+        self.viewer.close()
+      except AttributeError:
+        # Ignore pyglet 1.5.x bug on macOS
+        pass
     
   def get_action_meanings(self):
     return [self.atari_action_meaning[i] for i in self.atari_action_set]
@@ -921,16 +928,16 @@ class FrameStack(gym.Wrapper):
     self.observation_space = spaces.Box(low=0, high=255, shape=(shp[0], shp[1], shp[2] * n_frames),
                                         dtype=env.observation_space.dtype)
 
-  def reset(self):
-    obs = self.env.reset()
+  def reset(self, **kwargs):
+    obs, info = self.env.reset(**kwargs)
     for _ in range(self.n_frames):
         self.frames.append(obs)
-    return self._get_ob()
+    return self._get_ob(), info
 
   def step(self, action):
-    obs, reward, done, info = self.env.step(action)
+    obs, reward, truncated, terminated, info = self.env.step(action)
     self.frames.append(obs)
-    return self._get_ob(), reward, done, info
+    return self._get_ob(), reward, truncated, terminated, info
 
   def _get_ob(self):
     assert len(self.frames) == self.n_frames
