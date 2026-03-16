@@ -1,15 +1,14 @@
-from setuptools import setup
+import setuptools
 
-setup(
-    name='slimevolleygym',
-    version='0.1.0',
-    keywords='games, environment, agent, rl, ai, gym',
-    url='https://github.com/hardmaru/slimevolleygym',
-    description='Slime Volleyball Gym Environment',
-    packages=['slimevolleygym'],
+setuptools.setup(
+    name="slimevb",
+    version="0.0.4",
+    description="Port of David Ha's Slime volleyball for gymnasium.",
+    author="Chase McDonald",
+    author_email="chasemcd@andrew.cmu.edu",
+    packages=setuptools.find_packages(),
     install_requires=[
-        'gym>=0.9.4',
-        'numpy>=1.13.0',
-        'opencv-python>=3.4.2.0'
-    ]
+        "numpy",
+        "gymnasium",
+    ],  # external packages as dependencies
 )
